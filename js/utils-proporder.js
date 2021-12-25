@@ -347,12 +347,16 @@ PropOrder._BACKGROUND = [
 		],
 	}),
 
+	"feats",
+
 	"skillProficiencies",
 	"languageProficiencies",
 	"toolProficiencies",
 	"startingEquipment",
 
 	"additionalSpells",
+
+	"fromFeature",
 
 	"entries",
 
@@ -933,6 +937,8 @@ PropOrder._ITEM = [
 	"attachedSpells",
 	"spellScrollLevel",
 	"lootTables",
+
+	"seeAlsoVehicle",
 
 	"hasFluff",
 	"hasFluffImages",

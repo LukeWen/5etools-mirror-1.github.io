@@ -1,7 +1,7 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
 	"$id": "items.json",
-	"version": "1.11.1",
+	"version": "1.11.2",
 	"type": "object",
 	"definitions": {
 		"itemData": {
@@ -413,6 +413,13 @@
 					"type": "boolean"
 				},
 				"spellScrollLevel": {"type": "integer"},
+				"seeAlsoVehicle": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"description": "UIDs of \"vehicle\"s to be linked in a \"See Also\" footnote.\nEx.: \"rowboat|gos\"."
+					}
+				},
 				"reqAttuneTags": {
 					"$ref": "util.json#/definitions/reqAttuneTags"
 				},
@@ -444,44 +451,22 @@
 					"foundryData": {"$ref": "util.json#/definitions/foundryDataObject"},
 					"foundryEffects": {"type": "array", "items": {"$ref": "util.json#/definitions/foundryEffectObject"}},
 					"fluff": {
-						"description": "This is intended to be used for Homebrew only - site data should include a fluff file per source.",
-						"anyOf": [
-							{
-								"description": "References \"itemFluff\" array items",
-								"type": "object",
-								"properties": {
-									"_itemFluff": {
-										"type": "object",
-										"properties": {
-											"name": {
-												"type": "string"
-											},
-											"source": {
-												"type": "string"
-											}
-										}
-									},
-									"_appendItemFluff": {
-										"type": "object",
-										"properties": {
-											"name": {
-												"type": "string"
-											},
-											"source": {
-												"type": "string"
-											}
-										}
-									}
-								}
-							},
-							{
-								"$ref": "util.json#/definitions/fluffObject"
-							}
-						]
+						"$ref": "shared-items.json#/definitions/fluff"
 					}
 				}
 			},
-			"additionalProperties": false
+			"$$ifSite": {
+				"additionalProperties": false
+			},
+			"$$ifBrew": {
+				"additionalProperties": {
+					"type": [
+						"boolean",
+						"integer",
+						"string"
+					]
+				}
+			}
 		},
 
 		"item": {
@@ -526,7 +511,20 @@
 			"description": "Used to create fake item entries for groups of related items, often referred to as a single item (e.g. arcane foci)",
 			"type": "array",
 			"items": {
-				"$ref": "#/definitions/item"
+				"type":"object",
+				"$ref": "#/definitions/item",
+				"oneOf": [
+					{
+						"required": [
+							"items"
+						]
+					},
+					{
+						"required": [
+							"_copy"
+						]
+					}
+				]
 			}
 		},
 		"_meta": {

@@ -7,7 +7,7 @@ if (IS_NODE) require("./parser.js");
 
 // in deployment, `IS_DEPLOYED = "<version number>";` should be set below.
 IS_DEPLOYED = undefined;
-VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.144.0"/* 5ETOOLS_VERSION__CLOSE */;
+VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.146.0"/* 5ETOOLS_VERSION__CLOSE */;
 DEPLOYED_STATIC_ROOT = ""; // "https://static.5etools.com/"; // FIXME re-enable this when we have a CDN again
 // for the roll20 script to set
 IS_VTT = false;
@@ -975,7 +975,8 @@ MiscUtil = {
 	COLOR_BLOODIED: "#f7a100",
 	COLOR_DEFEATED: "#cc0000",
 
-	copy (obj) {
+	copy (obj, safe = false) {
+		if (safe && obj === undefined) return undefined; // Generally use "unsafe," as this helps identify bugs.
 		return JSON.parse(JSON.stringify(obj));
 	},
 
@@ -1347,7 +1348,7 @@ MiscUtil = {
 		return new Promise(resolve => setTimeout(() => resolve(resolveAs), msecs));
 	},
 
-	GENERIC_WALKER_ENTRIES_KEY_BLACKLIST: new Set(["caption", "type", "colLabels", "name", "colStyles", "style", "shortName", "subclassShortName"]),
+	GENERIC_WALKER_ENTRIES_KEY_BLACKLIST: new Set(["caption", "type", "colLabels", "name", "colStyles", "style", "shortName", "subclassShortName", "id", "path"]),
 
 	/**
 	 * @param [opts]
@@ -2824,6 +2825,17 @@ DataUtil = {
 			};
 		},
 
+		getNormalizedUid (uid, tag) {
+			const {name, source} = DataUtil.generic.unpackUid(uid, tag, {isLower: true});
+			return [name, source].join("|");
+		},
+
+		getUid (ent) {
+			const {name, source} = ent;
+			if (!name || !source) throw new Error(`Entity did not have a name and source!`);
+			return [name, source].join("|").toLowerCase();
+		},
+
 		async _pMergeCopy (impl, page, entryList, entry, options) {
 			if (!entry._copy) return;
 
@@ -3459,9 +3471,10 @@ DataUtil = {
 	},
 
 	proxy: {
-		getVersions (prop, ent) {
-			return (DataUtil[prop]?.getVersions || DataUtil.generic.getVersions)(ent);
-		},
+		getVersions (prop, ent) { return (DataUtil[prop]?.getVersions || DataUtil.generic.getVersions)(ent); },
+		unpackUid (prop, uid, tag, opts) { return (DataUtil[prop]?.unpackUid || DataUtil.generic.unpackUid)(uid, tag, opts); },
+		getNormalizedUid (prop, uid, tag, opts) { return (DataUtil[prop]?.getNormalizedUid || DataUtil.generic.getNormalizedUid)(uid, tag, opts); },
+		getUid (prop, ent) { return (DataUtil[prop]?.getUid || DataUtil.generic.getUid)(ent); },
 	},
 
 	monster: {
@@ -6273,23 +6286,20 @@ CollectionUtil = {
 	},
 
 	deepEquals (a, b) {
-		if (CollectionUtil._eq_sameValueZeroEqual(a, b)) return true;
+		if (Object.is(a, b)) return true;
 		if (a && b && typeof a === "object" && typeof b === "object") {
 			if (CollectionUtil._eq_isPlainObject(a) && CollectionUtil._eq_isPlainObject(b)) return CollectionUtil._eq_areObjectsEqual(a, b);
-			const arrayA = Array.isArray(a);
-			const arrayB = Array.isArray(b);
-			if (arrayA || arrayB) return arrayA === arrayB && CollectionUtil._eq_areArraysEqual(a, b);
-			const setA = a instanceof Set;
-			const setB = b instanceof Set;
-			if (setA || setB) return setA === setB && CollectionUtil.setEq(a, b);
+			const isArrayA = Array.isArray(a);
+			const isArrayB = Array.isArray(b);
+			if (isArrayA || isArrayB) return isArrayA === isArrayB && CollectionUtil._eq_areArraysEqual(a, b);
+			const isSetA = a instanceof Set;
+			const isSetB = b instanceof Set;
+			if (isSetA || isSetB) return isSetA === isSetB && CollectionUtil.setEq(a, b);
 			return CollectionUtil._eq_areObjectsEqual(a, b);
 		}
 		return false;
 	},
 
-	// This handles the NaN != NaN case; ignore linter complaints
-	// eslint-disable-next-line no-self-compare
-	_eq_sameValueZeroEqual: (a, b) => a === b || (a !== a && b !== b),
 	_eq_isPlainObject: (value) => value.constructor === Object || value.constructor == null,
 	_eq_areObjectsEqual (a, b) {
 		const keysA = Object.keys(a);
@@ -6442,7 +6452,7 @@ Array.prototype.mergeMap || Object.defineProperty(Array.prototype, "mergeMap", {
 	enumerable: false,
 	writable: true,
 	value: function (fnMap) {
-		return this.map((...args) => fnMap(...args)).reduce((a, b) => Object.assign(a, b), {});
+		return this.map((...args) => fnMap(...args)).filter(it => it != null).reduce((a, b) => Object.assign(a, b), {});
 	},
 });
 
@@ -7074,10 +7084,8 @@ if (!IS_VTT && typeof window !== "undefined") {
 		$(document.body)
 			.on("click", `[data-packed-dice]`, evt => {
 				Renderer.dice.pRollerClickUseData(evt, evt.currentTarget);
-			})
-			.on("click", `[data-rd-data-embed-header]`, evt => {
-				Renderer.events.handleClick_dataEmbedHeader(evt, evt.currentTarget);
 			});
+		Renderer.events.bindGeneric();
 	});
 
 	if (location.origin === VeCt.LOC_ORIGIN_CANCER) {

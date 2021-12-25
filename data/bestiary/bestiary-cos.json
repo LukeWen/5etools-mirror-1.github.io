@@ -154,7 +154,9 @@
 		},
 		{
 			"name": "Baba Lysaga",
-			"group": "Hags",
+			"group": [
+				"Hags"
+			],
 			"isNpc": true,
 			"source": "CoS",
 			"page": 228,
@@ -4555,11 +4557,14 @@
 			"conditionImmune": [
 				"charmed",
 				"frightened"
-			]
+			],
+			"hasToken": true
 		},
 		{
 			"name": "Wereraven",
-			"group": "Lycanthropes",
+			"group": [
+				"Lycanthropes"
+			],
 			"source": "CoS",
 			"page": 242,
 			"otherSources": [

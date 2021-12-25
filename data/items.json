@@ -1672,6 +1672,9 @@
 			"lootTables": [
 				"Magic Item Table I"
 			],
+			"seeAlsoVehicle": [
+				"Apparatus of Kwalish|DMG"
+			],
 			"hasFluffImages": true
 		},
 		{
@@ -2058,7 +2061,7 @@
 				"Sorcerer"
 			],
 			"entries": [
-				"This crystal is a solidified shard of the Astral Plane, swirling with silver mist. As an action, you can attach the shard to a Tiny object (such as a weapon or a piece of jewelry) or detach it. It falls off if your attunement to it ends. You can use the shard as a spellcasting focus for your sorcerer spells while you hold or wear it.",
+				"This crystal is a solidified shard of the Astral Plane, swirling with silver mist. As an action, you can attach the shard to a Tiny object (such as a weapon or a piece of jewelry) or detach it. It falls off if your attunement to it ends. You can use the shard as a spellcasting focus while you hold or wear it.",
 				"When you use a Metamagic option on a spell while you are holding or wearing the shard, immediately after casting the spell you can teleport to an unoccupied space you can see within 30 feet of you."
 			]
 		},
@@ -5195,6 +5198,17 @@
 			"hasFluffImages": true
 		},
 		{
+			"name": "Bottle of Boundless Coffee",
+			"source": "SCC",
+			"page": 38,
+			"rarity": "common",
+			"wondrous": true,
+			"entries": [
+				"This metal bottle carries delicious, warm coffee. The bottle comes with a stopper, which is attached to the bottle by a little chain. Even when open, the bottle won't accept any liquid other than the coffee it produces. The coffee inside is always comfortably warm, and none of the heat can be felt through the bottle.",
+				"Each time you drink the coffee, roll a {@dice d20}. On a 1, the bottle refuses to dispense coffee for the next hour. If you pour coffee from the bottle, rather than drinking from it, the coffee vanishes the moment it leaves the bottle."
+			]
+		},
+		{
 			"name": "Bottle stopper cork embossed with gold leaf and set with amethysts",
 			"source": "DMG",
 			"page": 135,
@@ -6402,7 +6416,7 @@
 			"wondrous": true,
 			"weight": 0.01,
 			"entries": [
-				"This Tiny pot bears relief scenes of heroes on its cast iron sides. You can use the cauldron as a spellcasting focus for your druid spells, and it functions as a suitable component for the {@spell scrying} spell. When you finish a long rest, you can use the cauldron to create a {@item potion of greater healing}. The potion lasts for 24 hours, then loses its magic if not consumed.",
+				"This Tiny pot bears relief scenes of heroes on its cast iron sides. You can use the cauldron as a spellcasting focus for your spells, and it functions as a suitable component for the {@spell scrying} spell. When you finish a long rest, you can use the cauldron to create a {@item potion of greater healing}. The potion lasts for 24 hours, then loses its magic if not consumed.",
 				"As an action, you can cause the cauldron to grow large enough for a Medium creature to crouch within. You can revert the cauldron to its normal size as an action, harmlessly shunting anything that can't fit inside to the nearest unoccupied space.",
 				"If you place the corpse of a humanoid into the cauldron and cover the corpse with 200 pounds of salt (which costs 10 gp) for at least 8 hours, the salt is consumed and the creature returns to life as if by {@spell raise dead} at the next dawn. Once used, this property can't be used again for 7 days."
 			],
@@ -6490,10 +6504,36 @@
 			"page": 157,
 			"srd": true,
 			"basicRules": true,
+			"additionalSources": [
+				{
+					"source": "MOT",
+					"page": 196
+				}
+			],
 			"type": "VEH",
 			"rarity": "none",
 			"weight": 100,
-			"value": 25000
+			"value": 25000,
+			"additionalEntries": [
+				{
+					"type": "inset",
+					"name": "Chariots",
+					"source": "MOT",
+					"page": 196,
+					"entries": [
+						"Chariots and the creatures pulling them work like controlled mounts, as described in the mounted combat rules in the {@book Player's Handbook|PHB|9|Mounted Combat}, but with the following differences:",
+						{
+							"type": "list",
+							"items": [
+								"Mounting or dismounting a chariot costs you 5 feet of movement, rather than a number of feet equal to half your speed.",
+								"Being mounted on a chariot grants you half cover.",
+								"A chariot's speed is equal to the speed of the slowest creature pulling it.",
+								"If multiple creatures are pulling the chariot, they all act on the same initiative, and they must take the same action on their turn."
+							]
+						}
+					]
+				}
+			]
 		},
 		{
 			"name": "Charlatan's Die",
@@ -8035,6 +8075,17 @@
 				"Magic Item Table I"
 			],
 			"hasFluffImages": true
+		},
+		{
+			"name": "Cuddly Strixhaven Mascot",
+			"source": "SCC",
+			"page": 38,
+			"rarity": "common",
+			"wondrous": true,
+			"entries": [
+				"Representing one of the mascots of Strixhaven, this soft, Tiny, magic toy is perfect for cuddling. If you press it to your arm, shoulder, or leg as an action, the toy stays attached there for 1 hour or until you use an action to remove it.",
+				"The toy can also be used to fight off fear. When you make a saving throw to avoid or end the {@condition frightened} condition on yourself, you can give yourself advantage on the roll if the toy is on your person. You must decide to do so before rolling the {@dice d20}. If the save succeeds, you can't use the toy in this way until you finish a long rest."
+			]
 		},
 		{
 			"name": "Cursed Luckstone",
@@ -13423,7 +13474,10 @@
 			"vehHp": 500,
 			"vehDmgThresh": 20,
 			"vehSpeed": 4,
-			"capCargo": 150
+			"capCargo": 150,
+			"seeAlsoVehicle": [
+				"Galley"
+			]
 		},
 		{
 			"name": "Garnet",
@@ -18326,6 +18380,9 @@
 			"capCargo": 0.5,
 			"entries": [
 				"Keelboats and rowboats are used on lakes and rivers. If going downstream, add the speed of the current (typically 3 miles per hour) to the speed of the vehicle. These vehicles can't be rowed against any significant current, but they can be pulled upstream by draft animals on the shores."
+			],
+			"seeAlsoVehicle": [
+				"Keelboat"
 			]
 		},
 		{
@@ -19444,7 +19501,10 @@
 			"vehDmgThresh": 15,
 			"vehSpeed": 3,
 			"capPassenger": 150,
-			"capCargo": 10
+			"capCargo": 10,
+			"seeAlsoVehicle": [
+				"Longship"
+			]
 		},
 		{
 			"name": "Lord's Ensemble",
@@ -19483,6 +19543,25 @@
 				}
 			],
 			"hasFluffImages": true
+		},
+		{
+			"name": "Lorehold Primer",
+			"source": "SCC",
+			"page": 39,
+			"rarity": "uncommon",
+			"reqAttune": "by a spellcaster",
+			"reqAttuneTags": [
+				{
+					"spellcasting": true
+				}
+			],
+			"wondrous": true,
+			"recharge": "dawn",
+			"charges": 3,
+			"entries": [
+				"The Lorehold Primer is a magic textbook created at Strixhaven's Lorehold College. The primer has 3 charges, and it regains {@dice 1d3} expended charges daily at dawn. If you make an Intelligence ({@skill History}) or Intelligence ({@skill Religion}) check while holding the primer, you can expend 1 charge to give yourself {@dice 1d4} bonus to the check, immediately after you roll the {@dice d20}.",
+				"In addition, if you study the primer at the end of a long rest, you can choose one 1st-level spell from the cleric or wizard spell list. Before you finish your next long rest, you can cast the chosen spell once without a spell slot if you are holding the primer. Your spellcasting ability for this spell is your choice of Intelligence, Wisdom, or Charisma."
+			]
 		},
 		{
 			"name": "Lost Crown of Besilmer",
@@ -20350,6 +20429,19 @@
 						]
 					]
 				}
+			]
+		},
+		{
+			"name": "Masque Charm",
+			"source": "SCC",
+			"page": 127,
+			"rarity": "common",
+			"wondrous": true,
+			"entries": [
+				"A masque charm is a small silver pin. While wearing this charm, you can use an action to cast the {@spell disguise self} spell (DC 13 to discern the disguise). Once the spell is cast, it can't be cast from the charm again until the next sunset. When casting the spell, you can have the spell last for its normal 1 hour duration or for 6 hours. If you choose the 6-hour duration, the charm becomes nonmagical when the spell ends. In either case, the spell ends if the charm is removed from you."
+			],
+			"attachedSpells": [
+				"disguise self"
 			]
 		},
 		{
@@ -21275,6 +21367,73 @@
 			"rarity": "uncommon",
 			"entries": [
 				"White dust swirls constantly within this pale gray potion. When you drink the potion, it cures you of mummy rot."
+			]
+		},
+		{
+			"name": "Murgaxor's Orb",
+			"source": "SCC",
+			"page": 126,
+			"rarity": "legendary",
+			"reqAttune": true,
+			"wondrous": true,
+			"curse": true,
+			"sentient": true,
+			"entries": [
+				"Roiling green mist fills this glass orb, which the exiled Strixhaven mage {@creature Murgaxor|SCC} once used in foul magical experiments. Murgaxor's spirit has infused the orb, which he uses to spread a terrible curse among Strixhaven's students.",
+				{
+					"type": "entries",
+					"name": "Sentience",
+					"entries": [
+						"Murgaxor's orb is a sentient, chaotic evil magic item with the following properties:",
+						{
+							"type": "list",
+							"items": [
+								"The orb has an Intelligence of 20, a Wisdom of 16, and a Charisma of 16, as well as hearing and {@sense darkvision} out to a range of 30 feet.",
+								"The orb can speak, read, and understand Common, and it can communicate telepathically with any creature touching it.",
+								"At any time during your turn, the orb can cast the {@spell suggestion} spell (save DC 17), targeting you or one other creature that touched the orb within the last 24 hours. This isn't a power of the orb that you control."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Curse",
+					"entries": [
+						"Any Humanoid you touch while holding the orb must succeed on a DC 10 Wisdom saving throw or become cursed. Each creature cursed by the orb bears an echo of Murgaxor's hateful thoughts, and that creature suffers from headaches that are persistent but not debilitating until the curse ends. On your turn, the orb can use an action to produce one of the following effects, targeting one or more creatures it has cursed:"
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Unconsciousness",
+					"entries": [
+						"The cursed creature falls {@condition unconscious} for 1 hour. The creature is roused if it takes damage or someone uses an action to shake or slap it awake."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Visions of Terror",
+					"entries": [
+						"The cursed creature sees terrifying visions, causing it to view all creatures that aren't also cursed as dangerous monsters for 10 minutes. The cursed creature must use its action each round to make one attack against the nearest non-cursed creature. If the cursed creature has multiple possible targets, it attacks one at random. This effect ends if the cursed creature is {@condition incapacitated}.",
+						"After either of these effects ends, the affected creature is no longer cursed. The curse can also be removed from a creature with a {@spell remove curse} spell or similar magic. All cases of the curse end if Murgaxor's orb is destroyed."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Magical Signature",
+					"entries": [
+						"As a side effect of the orb's curse, the spell {@spell detect magic} reveals an aura of enchantment surrounding creatures bearing the curse. This aura is distinctive, but in a way {@spell detect magic} offers no further details about."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Destroying the Orb",
+					"entries": [
+						"Murgaxor's orb has AC 18; 20 hit points; immunity to necrotic, poison, and psychic damage; and resistance to all other types of damage. If reduced to 0 hit points, the orb shatters."
+					]
+				}
+			],
+			"attachedSpells": [
+				"suggestion"
 			]
 		},
 		{
@@ -25113,6 +25272,25 @@
 			]
 		},
 		{
+			"name": "Prismari Primer",
+			"source": "SCC",
+			"page": 39,
+			"rarity": "uncommon",
+			"reqAttune": "by a spellcaster",
+			"reqAttuneTags": [
+				{
+					"spellcasting": true
+				}
+			],
+			"wondrous": true,
+			"recharge": "dawn",
+			"charges": 3,
+			"entries": [
+				"The Prismari Primer is a magic textbook created at Strixhaven's Prismari College. The primer has 3 charges, and it regains {@dice 1d3} expended charges daily at dawn. If you make a Dexterity ({@skill Acrobatics}) or a Charisma ({@skill Performance}) check while holding the primer, you can expend 1 charge to give yourself a {@dice 1d4} bonus to the check, immediately after you roll the {@dice d20}.",
+				"In addition, if you study the primer at the end of a long rest, you can choose one 1st-level spell from the bard or sorcerer spell list. Before you finish your next long rest, you can cast the chosen spell once without a spell slot if you are holding the primer. Your spellcasting ability for this spell is your choice of Intelligence, Wisdom, or Charisma."
+			]
+		},
+		{
 			"name": "Prismatic Well",
 			"source": "NRH-AT",
 			"page": 8,
@@ -25531,6 +25709,25 @@
 						"As a bonus action on your turn, you can direct the whip to fly up to 20 feet and repeat the attack against a creature within 10 feet of it. The whip disappears after 1 hour, when you use an action to dismiss it, or when you are {@condition incapacitated} or die."
 					]
 				}
+			]
+		},
+		{
+			"name": "Quandrix Primer",
+			"source": "SCC",
+			"page": 39,
+			"rarity": "uncommon",
+			"reqAttune": "by a spellcaster",
+			"reqAttuneTags": [
+				{
+					"spellcasting": true
+				}
+			],
+			"wondrous": true,
+			"recharge": "dawn",
+			"charges": 3,
+			"entries": [
+				"The Quandrix Primer is a magic textbook created at Strixhaven's Quandrix College. The primer has 3 charges, and it regains {@dice 1d3} expended charges daily at dawn. If you make an Intelligence ({@skill Arcana}) or an Intelligence ({@skill Nature}) check while holding the primer, you can expend 1 charge to give yourself a {@dice 1d4} bonus to the check, immediately after you roll the {@dice d20}.",
+				"In addition, if you study the primer at the end of a long rest, you can choose one 1st-level spell from the druid or wizard spell list. Before you finish your next long rest, you can cast the chosen spell once without a spell slot if you are holding the primer. Your spellcasting ability for this spell is your choice of Intelligence, Wisdom, or Charisma."
 			]
 		},
 		{
@@ -26598,7 +26795,7 @@
 			"recharge": "dawn",
 			"charges": 3,
 			"entries": [
-				"This ring has 3 charges, and it regains {@dice 1d3} expended charges daily at dawn. While wearing the ring, you can use an action to expend 1 to 3 of its charges to attack one creature you can see within 60 feet of you. The ring produces a spectral ram's head and makes its attack roll with a +7 bonus. On a hit, for each charge you spend, the target takes {@damage 2d10} force damage and is pushed 5 feet away from you.",
+				"This ring has 3 charges, and it regains {@dice 1d3} expended charges daily at dawn. While wearing the ring, you can use an action to expend 1 to 3 of its charges to make a ranged spell attack against one creature you can see within 60 feet of you. The ring produces a spectral ram's head and makes its attack roll with a +7 bonus. On a hit, for each charge you spend, the target takes {@damage 2d10} force damage and is pushed 5 feet away from you.",
 				"Alternatively, you can expend 1 to 3 of the ring's charges as an action to try to break an object you can see within 60 feet of you that isn't being worn or carried. The ring makes a Strength check with a +5 bonus for each charge you spend."
 			],
 			"lootTables": [
@@ -27404,6 +27601,9 @@
 			"capPassenger": 3,
 			"entries": [
 				"Keelboats and rowboats are used on lakes and rivers, If going downstream, add the speed of the current (typically 3 miles per hour) to the speed of the vehicle. These vehicles can't be rowed against any significant current, but they can be pulled upstream by draft animals on the shores. A rowboat weighs 100 pounds, in case adventurers carry it over land."
+			],
+			"seeAlsoVehicle": [
+				"Rowboat"
 			]
 		},
 		{
@@ -27719,7 +27919,10 @@
 			"vehDmgThresh": 15,
 			"vehSpeed": 2,
 			"capPassenger": 20,
-			"capCargo": 100
+			"capCargo": 100,
+			"seeAlsoVehicle": [
+				"Sailing Ship"
+			]
 		},
 		{
 			"name": "Saint Markovia's Thighbone",
@@ -29101,6 +29304,25 @@
 			"type": "$",
 			"rarity": "none",
 			"value": 75000
+		},
+		{
+			"name": "Silverquill Primer",
+			"source": "SCC",
+			"page": 39,
+			"rarity": "uncommon",
+			"reqAttune": "by a spellcaster",
+			"reqAttuneTags": [
+				{
+					"spellcasting": true
+				}
+			],
+			"wondrous": true,
+			"recharge": "dawn",
+			"charges": 3,
+			"entries": [
+				"The Silverquill Primer is a magic textbook created at Strixhaven's Silverquill College. The primer has 3 charges, and it regains {@dice 1d3} expended charges daily at dawn. If you make a Charisma ({@skill Intimidation}) or a Charisma ({@skill Persuasion}) check while holding the primer, you can expend 1 charge to give yourself a {@dice 1d4} bonus to the check, immediately after you roll the {@dice d20}.",
+				"In addition, if you study the primer at the end of a long rest, you can choose one 1st-level spell from the bard or cleric spell list. Before you finish your next long rest, you can cast the chosen spell once without a spell slot if you are holding the primer. Your spellcasting ability for this spell is your choice of Intelligence, Wisdom, or Charisma."
+			]
 		},
 		{
 			"name": "Simic Guild Signet",
@@ -32006,6 +32228,16 @@
 			],
 			"attachedSpells": [
 				"control weather"
+			]
+		},
+		{
+			"name": "Strixhaven Pennant",
+			"source": "SCC",
+			"page": 39,
+			"rarity": "common",
+			"wondrous": true,
+			"entries": [
+				"This magic pennant bears the symbol of Strixhaven or one of its colleges: Lorehold, Prismari, Quandrix, Silverquill, or Witherbloom. While you wave the pennant, the symbol on it glitters, and the pennant sheds bright light in a 10-foot-radius and dim light for an additional 10 feet."
 			]
 		},
 		{
@@ -37380,7 +37612,10 @@
 			"vehDmgThresh": 20,
 			"vehSpeed": 2.5,
 			"capPassenger": 60,
-			"capCargo": 200
+			"capCargo": 200,
+			"seeAlsoVehicle": [
+				"Warship"
+			]
 		},
 		{
 			"name": "Watchful Helm",
@@ -38385,6 +38620,25 @@
 			]
 		},
 		{
+			"name": "Witherbloom Primer",
+			"source": "SCC",
+			"page": 39,
+			"rarity": "uncommon",
+			"reqAttune": "by a spellcaster",
+			"reqAttuneTags": [
+				{
+					"spellcasting": true
+				}
+			],
+			"wondrous": true,
+			"recharge": "dawn",
+			"charges": 3,
+			"entries": [
+				"The Witherbloom Primer is a magic textbook created at Strixhaven's Witherbloom College. The primer has 3 charges, and it regains {@dice 1d3} expended charges daily at dawn. If you make an Intelligence ({@skill Nature}) or Wisdom ({@skill Survival}) check while holding the primer, you can expend 1 charge to give yourself a {@dice 1d4} bonus to the check, immediately after you roll the {@dice d20}.",
+				"In addition, if you study the primer at the end of a long rest, you can choose one 1st-level spell from the druid or wizard spell list. Before you finish your next long rest, you can cast the chosen spell once without a spell slot if you are holding the primer. Your spellcasting ability for this spell is your choice of Intelligence, Wisdom, or Charisma."
+			]
+		},
+		{
 			"name": "Woodcarver's Tools",
 			"source": "PHB",
 			"page": 154,
@@ -38625,7 +38879,7 @@
 			"rarity": "none",
 			"value": 100,
 			"entries": [
-				"A yahcha (pronounced YAH-chah) is a harmless, meaty beetle about the size of a human hand, which feeds on worms and maggots. It moves slowly (walking speed 10 feet) and is easy to catch. A creature with mad monkey fever that eats a raw or cooked yahcha can immediately make a saving throw with advantage against that disease (see \"Diseases,\" page 40),"
+				"A yahcha (pronounced YAH-chah) is a harmless, meaty beetle about the size of a human hand, which feeds on worms and maggots. It moves slowly (walking speed 10 feet) and is easy to catch. A creature with blue mist fever that eats a raw or cooked yahcha can immediately make a saving throw with advantage against that disease (see \"Diseases,\" page 40),"
 			]
 		},
 		{

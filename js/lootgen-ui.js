@@ -913,10 +913,10 @@ class LootGenUi extends BaseComponent {
 	}
 }
 LootGenUi._CHALLENGE_RATING_RANGES = {
-	0: "1\u20134",
+	0: "0\u20134",
 	5: "5\u201310",
 	11: "11\u201316",
-	17: "17\u201320",
+	17: "17+",
 };
 LootGenUi._PARTY_LOOT_LEVEL_RANGES = {
 	4: "1\u20134",
@@ -1404,7 +1404,7 @@ class LootGenMagicItem extends BaseComponent {
 		}
 
 		if (row.choose?.fromGeneric) {
-			const subItems = (await row.choose?.fromGeneric.pMap(nameOrUid => this._pGetMagicItemRoll_pGetItem({nameOrUid})))
+			const subItems = (await row.choose.fromGeneric.pMap(nameOrUid => this._pGetMagicItemRoll_pGetItem({nameOrUid})))
 				.map(it => it.variants.map(({specificVariant}) => specificVariant))
 				.flat();
 
@@ -1424,7 +1424,7 @@ class LootGenMagicItem extends BaseComponent {
 		}
 
 		if (row.choose?.fromGroup) {
-			const subItems = (await ((await row.choose?.fromGroup.pMap(nameOrUid => this._pGetMagicItemRoll_pGetItem({nameOrUid})))
+			const subItems = (await ((await row.choose.fromGroup.pMap(nameOrUid => this._pGetMagicItemRoll_pGetItem({nameOrUid})))
 				.pMap(it => it.items.pMap(x => this._pGetMagicItemRoll_pGetItem({nameOrUid: x})))))
 				.flat();
 

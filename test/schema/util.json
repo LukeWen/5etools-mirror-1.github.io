@@ -3,7 +3,7 @@
 	"$id": "util.json",
 	"title": "Util",
 	"description": "Utility definitions to be used in other schemas.",
-	"version": "1.11.1",
+	"version": "1.11.3",
 	"definitions": {
 		"metaBlock": {
 			"type": "object",
@@ -1055,6 +1055,20 @@
 				}
 			}
 		},
+		"additionalFeatsArray": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"any": {
+						"type": "integer"
+					}
+				},
+				"additionalProperties": {
+					"type": "boolean"
+				}
+			}
+		},
 		"proficiencyTag": {
 			"type": "string",
 			"enum": [
@@ -1287,6 +1301,12 @@
 						]
 					},
 					"spell": {
+						"type": "array",
+						"items": {
+							"$ref": "entry.json"
+						}
+					},
+					"feat": {
 						"type": "array",
 						"items": {
 							"$ref": "entry.json"
